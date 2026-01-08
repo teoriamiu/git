@@ -1,0 +1,252 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+  <meta charset="UTF-8">
+  
+  <!-- METADATOS SEMÁNTICOS -->
+  <meta name="description" content="Marco teórico completo de Git como sistema distribuido de control de versiones">
+  <meta name="keywords" content="Git, control de versiones, sistemas distribuidos, commits, DAG, versionado">
+  <meta name="author" content="Clase de Programación">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <!-- COLOR Y TEMA -->
+  <meta name="color-scheme" content="light dark">
+  <meta name="theme-color" content="#0f172a">
+  
+  <title>Clase teórica de Git</title>
+  
+  <style>
+    body {
+      margin: 0;
+      padding: 32px;
+      background: #0f172a;
+      color: #e5e7eb;
+      font-family: system-ui, -apple-system, BlinkMacSystemFont, sans-serif;
+      line-height: 1.65;
+    }
+    
+    h1,
+    h2,
+    h3 {
+      color: #38bdf8;
+      line-height: 1.3;
+    }
+    
+    h1 {
+      font-size: 2rem;
+      margin-bottom: 8px;
+    }
+    
+    h2 {
+      margin-top: 40px;
+      font-size: 1.4rem;
+    }
+    
+    p {
+      max-width: 900px;
+    }
+    
+    em {
+      color: #a5f3fc;
+      font-style: italic;
+    }
+    
+    strong {
+      color: #f8fafc;
+    }
+    
+    ul {
+      margin-left: 20px;
+    }
+    
+    li {
+      margin-bottom: 6px;
+    }
+    
+    .block {
+      background: #020617;
+      padding: 20px;
+      border-radius: 10px;
+      margin: 24px 0;
+      max-width: 900px;
+    }
+    
+    .quote {
+      border-left: 4px solid #38bdf8;
+      padding-left: 16px;
+      margin: 24px 0;
+      color: #cbd5f5;
+      font-style: italic;
+    }
+    
+    .video {
+      margin-top: 48px;
+      max-width: 900px;
+    }
+    
+    iframe {
+      width: 100%;
+      aspect-ratio: 16 / 9;
+      border: none;
+      border-radius: 12px;
+    }
+    
+    footer {
+      margin-top: 64px;
+      font-size: 0.9rem;
+      color: #94a3b8;
+    }
+  </style>
+</head>
+
+<body>
+  
+  <h1>Clase teórica de Git</h1>
+  
+  <p>
+    Git no es simplemente una herramienta para “guardar versiones”.
+    Es un <em>sistema formal de control de versiones distribuido</em>,
+    diseñado para modelar la evolución del conocimiento técnico en
+    entornos colaborativos bajo condiciones de conflicto, divergencia
+    y cambio continuo.
+  </p>
+  
+  <p>
+    Su marco teórico combina <strong>teoría de grafos</strong>,
+    <strong>sistemas distribuidos</strong> y
+    <strong>principios de inmutabilidad</strong>.
+  </p>
+  
+  <h2>1. Ontología: qué “existe” en Git</h2>
+  
+  <div class="block">
+    <p>
+      La entidad fundamental en Git no es el archivo, ni la carpeta,
+      ni el repositorio, sino el <em>commit</em>.
+    </p>
+    <ul>
+      <li>Un commit es un objeto inmutable.</li>
+      <li>Cada commit referencia a uno o más commits padres.</li>
+      <li>El historial forma un <em>grafo acíclico dirigido (DAG)</em>.</li>
+    </ul>
+    <p>
+      Las ramas no son entidades físicas: son <em>punteros móviles</em>
+      dentro del grafo.
+    </p>
+  </div>
+  
+  <h2>2. El contenido antes que el archivo</h2>
+  
+  <div class="block">
+    <p>
+      Git no versiona archivos: versiona <em>contenido</em>.
+    </p>
+    <ul>
+      <li>Los archivos se representan como blobs.</li>
+      <li>Los directorios son árboles que referencian blobs y otros árboles.</li>
+      <li>El nombre del archivo es secundario frente al hash del contenido.</li>
+    </ul>
+    <p>
+      La identidad se define por lo que es, no por dónde está.
+    </p>
+  </div>
+  
+  <h2>3. Inmutabilidad como principio fundacional</h2>
+  
+  <div class="block">
+    <ul>
+      <li>Un commit nunca se modifica.</li>
+      <li>Si el contenido cambia, el hash cambia.</li>
+      <li>El pasado no se edita: se crean nuevos nodos.</li>
+    </ul>
+    <p>
+      Conceptualmente, Git es un sistema <em>append-only</em>.
+    </p>
+  </div>
+  
+  <h2>4. Versionado como grafo, no como línea</h2>
+  
+  <div class="block">
+    <ul>
+      <li>El historial puede bifurcarse.</li>
+      <li>Múltiples líneas de desarrollo coexisten.</li>
+      <li>La convergencia ocurre mediante merge o rebase.</li>
+    </ul>
+    <p>
+      El conflicto no es un error: es un estado normal del sistema.
+    </p>
+  </div>
+  
+  <h2>5. Distribución como axioma</h2>
+  
+  <div class="block">
+    <ul>
+      <li>Cada clon es un repositorio completo.</li>
+      <li>No existe un servidor central ontológicamente privilegiado.</li>
+      <li>La autoridad es social, no técnica.</li>
+    </ul>
+  </div>
+  
+  <h2>6. Epistemología del versionado</h2>
+  
+  <div class="block">
+    <ul>
+      <li>No existe un estado verdadero único.</li>
+      <li>Existen múltiples historias posibles.</li>
+      <li>La verdad emerge por consenso.</li>
+    </ul>
+    <p>
+      El control de versiones se convierte en una negociación explícita
+      de significado.
+    </p>
+  </div>
+  
+  <h2>7. Operaciones como transformaciones del grafo</h2>
+  
+  <div class="block">
+    <ul>
+      <li>Commit crea nodos.</li>
+      <li>Checkout mueve punteros.</li>
+      <li>Merge conecta grafos.</li>
+      <li>Rebase reescribe trayectorias.</li>
+    </ul>
+  </div>
+  
+  <h2>8. Tensiones y límites</h2>
+  
+  <div class="block">
+    <ul>
+      <li>Modelo mental complejo.</li>
+      <li>Metáforas engañosas basadas en archivos.</li>
+      <li>Riesgos de reescritura histórica mal comprendidos.</li>
+      <li>Comandos potentes con efectos profundos.</li>
+    </ul>
+  </div>
+  
+  <h2>9. Síntesis conceptual</h2>
+  
+  <div class="quote">
+    “Un sistema distribuido de versionado basado en objetos inmutables
+    organizados en un grafo, diseñado para gestionar la evolución
+    divergente y convergente del contenido bajo condiciones de
+    colaboración y conflicto.”
+  </div>
+  
+  <p>
+    Git no intenta evitar el conflicto.
+    Intenta <strong>hacerlo explícito, rastreable y reversible</strong>.
+  </p>
+  
+  <div class="video">
+    <h2>Material complementario</h2>
+    <iframe src="https://www.youtube.com/embed/niPExbK8lSw" title="Clase de Git" allowfullscreen></iframe>
+  </div>
+  
+  <footer>
+    Clase teórica de Git — modelo conceptual y fundamentos formales
+  </footer>
+  
+</body>
+
+</html>
